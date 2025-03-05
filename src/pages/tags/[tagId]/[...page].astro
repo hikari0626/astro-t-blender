@@ -1,0 +1,50 @@
+---
+export const prerender = true; //静的にレンダリング
+
+import { getBlogs,getTags,getTagDetail } from "../../../library/microcms";
+import type { GetStaticPathsOptions } from 'astro'; //ページャーを利用する場合は必須
+
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogList from '../../../components/BlogList.astro';
+import Pagination from '../../../components/Pagination.astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  //タグのIDだけの配列を作成
+  const response = await getTags({ fields: ["id"], limit: 100 }); //タグのデータを取得
+  const tagIds = response.contents.map(item => item.id); //タグのIDだけを配列化
+  //ブログのデータを取得
+  const blogs = await getBlogs({ limit: 100 });
+
+  //該当するタグの配列を返す
+  //.flatMap() は 配列の各要素に対して map() を実行した後、1次元の配列にフラット化（平坦化）する
+  return tagIds.flatMap((tagId) => {
+    // 各記事の `tags` に `tagId` が含まれているかを判定
+    // someは配列の中で1つでも一致する要素があれば true を返す。
+    const filteredPosts = blogs.contents.filter(item =>
+      item.tags.some(tag => tag.id === tagId) //記事のタグの中にtagIdと一致するものがあるか確認
+    );
+
+    console.log(`タグID: ${tagId}, 該当記事数: ${filteredPosts.length}`);
+
+    return paginate(filteredPosts, {
+      params: { tagId }, //タグのIDをURLパラメーターに設定
+      pageSize: 9
+    });
+  });
+}
+
+const { page } = Astro.props;
+const { tagId } = Astro.params; //ディレクトリに設定している変数に入れる
+
+// タグIDを使ってタグの詳細を取得
+const tag = await getTagDetail(tagId as string);  // タグの詳細情報を取得
+const pageTitle = `${tag.name}の記事一覧`; // タグの名前を使ってタイトルを設定
+
+//記事の設定
+const responseArray = page.data;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <BlogList responseArray={responseArray} />
+  <Pagination page={page} baseUrl={`/tags/${tagId}`} />
+</BaseLayout>

@@ -1,0 +1,48 @@
+---
+//画像の読み込み
+import { getBlogs } from "../library/microcms";
+const response = await getBlogs({ 
+  fields: ["id", "thumbnail"], 
+  limit: 6, 
+  offset: 0 //何軒目から取得するか
+});
+const responseArray = response.contents;
+---
+<section class="top-mv">
+  <div class="swiper top-mv__swiper">
+    <ul class="swiper-wrapper">
+      {responseArray.map((content: any) => (
+        <li class="swiper-slide">
+          <a href={`/${content.id}`}>
+            <figure>
+              <img src={content.thumbnail.url} alt=""/>
+            </figure>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="swiper-pagination top-mv__swiper-pagination"></div>
+  </div>
+</section>
+
+<script>
+  import Swiper from "swiper";
+  import "swiper/css/bundle";
+  import { Autoplay, Pagination } from "swiper/modules";
+
+  const swiper = new Swiper(".top-mv__swiper", {
+    modules: [Autoplay, Pagination],
+    // autoHeight: true,
+    loop: true,
+    speed: 1000,
+
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".top-mv__swiper-pagination",
+      clickable: true,
+    },
+  });
+</script>

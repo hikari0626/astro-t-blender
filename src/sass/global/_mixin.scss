@@ -1,0 +1,47 @@
+@use "setting"as *;
+
+@mixin mq($breakpoint: l, $rule: min) {
+  $breakpoint: map_get($mq-breakpoints, $breakpoint);
+  @if $rule == min  {
+    $breakpoint: $breakpoint + 1;
+  }
+  @media screen and (#{$rule}-width: $breakpoint) {
+    @content;
+  }
+}
+
+@function rate($child, $parent:$base_width){
+  $rate: 100 / $parent;
+  @return $rate * $child;
+}
+
+@function rm($size) {
+  @return ($size / $base_fontSize) * 1rem;
+}
+
+//clampの設定
+@function cl($min, $max, $min-view-port: 390, $max-view-port: 1480) {
+  $valiable-part: calc(($max - $min) / ($max-view-port - $min-view-port));
+  $constant: calc(($max - $max-view-port * $valiable-part) / 16);
+  $min-rem: calc($min / 16 * 1rem);
+  $max-rem: calc($max / 16 * 1rem);
+  $variable-rem: calc($constant * 1rem);
+  $variable-vw: calc(100 * $valiable-part * 1vw);
+
+  @return clamp($min-rem, $variable-rem + $variable-vw, $max-rem);
+}
+
+//絶対配置
+@function myPosition($base-position, $base-width) {
+  $position-with-px: $base-position + px;
+  @return min(($base-position / $base-width) * 100vw, $position-with-px);
+}
+
+//hoverの設定
+@mixin hover {
+  @media (hover: hover){
+    &:where(:any-link, :enabled, summary):hover {
+      @content;
+    }
+  }
+}

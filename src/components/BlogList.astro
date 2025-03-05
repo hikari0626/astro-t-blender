@@ -1,0 +1,23 @@
+---
+const { responseArray } = Astro.props;
+---
+<ul class="l-blog-list">
+  {responseArray.map((content: any) => (
+    <li>
+      <a href={`/${content.id}`}>
+        <figure>
+          <img src={content.thumbnail.url} alt=""/>
+        </figure>
+        <h2 class="tit">{content.title}</h2>
+        <time>{new Date(content.publishedAt).toLocaleDateString()}</time>
+      </a>
+      <ul class="c-tags">
+        {content.tags.map((tag: any) => (
+          <li class="tag">
+            <a href={`/tags/${tag.id}`}>{tag.name}</a>
+          </li>
+        ))}
+      </ul>
+    </li>
+  ))}
+</ul>

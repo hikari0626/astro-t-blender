@@ -1,0 +1,23 @@
+---
+export const prerender = true; //静的にレンダリング
+
+import { getBlogs } from "../../library/microcms";
+import type { GetStaticPathsOptions } from 'astro'; //ページャーを利用する場合は必須
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogList from '../../components/BlogList.astro';
+import Pagination from '../../components/Pagination.astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const blogs = await getBlogs({ limit: 100 });
+  return paginate(blogs.contents, { pageSize: 9 }); //9個ずつ記事を入れる
+}
+
+const { page } = Astro.props;
+const responseArray = page.data;
+---
+
+<BaseLayout pageTitle="ブログ一覧">
+  <BlogList responseArray={responseArray} />
+  <Pagination page={page} baseUrl="/page" />
+</BaseLayout>

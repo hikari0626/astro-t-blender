@@ -1,0 +1,38 @@
+---
+import PageLayout from '../../layouts/pageLayout.astro';
+
+const pageTitle = 'お問い合わせ';
+const slug = 'contact';
+
+const siteKey = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY; //recaptcha
+---
+
+<PageLayout pageTitle={pageTitle} slug={slug}>
+  <form id="contactForm" action="https://ssgform.com/s/vZ5tHbeMO8ma" method="post">
+    <dl>
+      <dt>
+        <label for="お名前">お名前<span class="required">必須</span></label>
+      </dt>
+      <dd>
+        <input type="text" name="お名前" aria-required="true" required />
+      </dd>
+    </dl>
+    <dl>
+      <dt><label for="メールアドレス">メールアドレス<span class="required">必須</span></label></dt>
+      <dd>
+        <input type="email" name="メールアドレス" aria-required="true" required />
+      </dd>
+    </dl>
+    <dl>
+      <dt><label for="お問い合わせ内容">お問い合わせ内容<span class="required">必須</span></label></dt>
+      <dd>
+        <textarea name="お問い合わせ内容" aria-required="true" required></textarea>
+      </dd>
+    </dl>
+    <!--reCAPTCHA-->
+      <input type="hidden" id="reCAPTCHA">
+      <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+    <!--/reCAPTCHA-->
+    <button id="submitBtn" type="submit">送信する</button>
+  </form>
+</PageLayout>

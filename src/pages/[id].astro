@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getBlogs, getBlogDetail } from "../library/microcms";
+import { fetchContentOrPreview } from "../utils/fetchContentOrPreview"; //プレビュー用
+
+// 型定義
+type News = {
+  id: string;
+  title: string;
+  content: string;
+  publishedAt: string;
+  tags: any;
+};
+
+// サーバーレンダリングにする
+export const prerender = false;
+
+// Astro パラメータから id を取得
+const { id } = Astro.params;
+if (!id) throw new Error("id is required");
+
+// URL から draftKey を取得
+const url = new URL(Astro.url.href);
+const draftKey = url.searchParams.get("draftKey");
+
+// キャッシュポリシーの定義
+const cachePolicies = {
+  noCache: "no-store, no-cache, max-age=0, must-revalidate",
+  publicIsr: "public, s-maxage=30, stale-while-revalidate=30",
+};
+
+// 詳細データを取得
+const content: News | null = await fetchContentOrPreview<News>({
+  endpoint: "articles",
+  id,
+  draftKey,
+});
+
+// 詳細データがない場合は 404 ページにリダイレクト
+if (!content) {
+  Astro.response.headers.set("Cache-Control", cachePolicies.noCache);
+  return Astro.redirect("/404", 302);
+}
+
+// キャッシュポリシーを設定
+const cachePolicy = draftKey ? cachePolicies.noCache : cachePolicies.publicIsr;
+Astro.response.headers.set("Cache-Control", cachePolicy);
+
+// ページャー
+const response = await getBlogs({ fields: ["id"], limit: 100 });
+const blogs = response.contents;
+const currentId = id;
+const index = blogs.findIndex((content) => content.id === currentId); // 現在の記事のインデックスを取得
+// 前後の記事のIDを取得（範囲チェック）
+const prevPostId = index > 0 ? blogs[index - 1].id : null;
+const nextPostId = index < blogs.length - 1 ? blogs[index + 1].id : null;
+
+---
+
+<BaseLayout pageTitle={content.title}>
+  <article class="l-blog-container c-blog-article">
+    <div class="c-blog-article__header">
+      <time class="time">{new Date(content.publishedAt).toLocaleDateString()}</time>
+      <ul class="c-tags">
+        {content.tags.map((tag: any) => (
+          <li class="tag">
+            <a href={`/tags/${tag.id}`}>{tag.name}</a>
+          </li>
+        ))}
+      </ul>
+      <h1 class="c-blog-article__tit">{content.title}</h1>
+    </div>
+    <div class="c-blog-article__contents" set:html={content.content} />
+  </article>
+  <nav class="c-blog-article__pager">
+    {prevPostId ? (
+      <a class="item" href={`/${prevPostId}`}>&#9665;</a>
+    ) : (
+      <span class="item"></span>
+    )}
+    <div class="c-btn">
+      <a href="/page/">ブログ一覧へ</a>
+    </div>
+    {nextPostId ? (
+      <a class="item" href={`/${nextPostId}`}>&#9655;</a>
+    ) : (
+      <span class="item"></span>
+    )}
+  </nav>
+</BaseLayout>

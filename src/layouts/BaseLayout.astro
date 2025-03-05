@@ -1,0 +1,26 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const { pageTitle, slug } = Astro.props;
+const { pathname } = Astro.url;  // 現在のURLパスを取得
+import '../styles/style.css';
+---
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pathname === '/' ? 'Blender日誌' : `${pageTitle} | Blender日誌`}</title>
+  </head>
+  <body>
+    <Header />
+    <main id={slug}>
+      <div class="l-inner">
+        <slot />
+      </div>
+    </main>
+    <Footer />
+    <script type="text/javascript" src="/scripts/common.js"></script>
+  </body>
+</html>

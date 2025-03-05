@@ -1,0 +1,75 @@
+---
+// paginate()関数で取得したpageプロパティ
+const {page, baseUrl} = Astro.props;
+
+//ページ番号リンクの作成
+// ページネーションの総ページ数
+const totalPages = page.lastPage;
+// ページ番号の配列 [1, 2, 3]のような形式で生成
+const pageNumbers = Array.from({length: totalPages}, (_, i) => {
+  return i + 1;
+});
+// ページ番号の範囲を設定（現在のページの前後ページを表示）
+const range = 1;
+const filteredPageNumbers = pageNumbers.filter((pageNumber) => {
+  return (
+    pageNumber >= page.currentPage - range &&
+    pageNumber <= page.currentPage + range
+  );
+});
+// ページ番号からページURLを生成
+const getPageUrl = (pageNumber:any) => {
+  return pageNumber === 1 ? page.url.first : `${baseUrl}/${pageNumber}`;
+}
+---
+
+{/* ページネーションのリンクが存在する場合のみ表示 */}
+{(page.url.prev || page.url.next) && ( //(page.url.prev || page.url.next) の条件が true のとき、<nav> 要素が表示される。
+  <nav class="pagination" aria-label="ページネーション">
+    <ul class="c-pagenavi">
+
+      {/* 前のページ */}
+      {page.url.prev && (
+        <li class="item">
+          <a class="link" href={page.url.prev}>&#9665;</a>
+        </li>
+      )}
+
+      {/* 最初のページ */}
+      {page.url.first && page.currentPage !== 2 && (
+        <li class="item number -first">
+          <a class="link" href={page.url.first}>1</a>
+        </li>
+      )}
+
+      {/* ○番目のページ */}
+      {filteredPageNumbers.map((pageNumber) => (
+        <li class="item number">
+          {page.currentPage === pageNumber ? (
+            <span class="link current" aria-current="page">
+              {pageNumber}
+            </span>
+          ) : (
+            <a class="link" href={getPageUrl(pageNumber)}>
+              {pageNumber}
+            </a>
+          )}
+        </li>
+      ))}
+
+      {/* 最後のページ */}
+      {page.url.last && page.currentPage !== page.lastPage - 1 && (
+        <li class="item number -last">
+          <a class="link" href={page.url.last}>{page.lastPage}</a>
+        </li>
+      )}
+
+      {/* 次のページ */}
+      {page.url.next && (
+        <li class="item">
+          <a class="link" href={page.url.next}>&#9655;</a>
+        </li>
+      )}
+    </ul>
+  </nav>
+)}

@@ -1,0 +1,1148 @@
+@charset "UTF-8";
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-style: solid;
+  border-width: 0;
+}
+
+/* Document */
+/* ============================================ */
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ * 3. Remove gray overlay on links for iOS.
+ */
+html {
+  line-height: 1; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+  -webkit-tap-highlight-color: transparent; /* 3*/
+}
+
+/* Sections */
+/* ============================================ */
+/**
+ * Remove the margin in all browsers.
+ */
+body {
+  margin: 0;
+}
+
+/**
+ * Render the `main` element consistently in IE.
+ */
+main {
+  display: block;
+}
+
+/* Vertical rhythm */
+/* ============================================ */
+p,
+table,
+blockquote,
+address,
+pre,
+iframe,
+form,
+figure,
+dl {
+  margin: 0;
+}
+
+/* Headings */
+/* ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Lists (enumeration) */
+/* ============================================ */
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Lists (definition) */
+/* ============================================ */
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-left: 0;
+}
+
+/* Grouping content */
+/* ============================================ */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+  border-top-width: 1px;
+  margin: 0;
+  clear: both;
+  color: inherit;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+address {
+  font-style: inherit;
+}
+
+/* Text-level semantics */
+/* ============================================ */
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+
+/**
+ * 1. Remove the bottom border in Chrome 57-
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+abbr[title] {
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+code,
+kbd,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: inherit; /* 2 */
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content */
+/* ============================================ */
+/**
+ * Prevent vertical alignment issues.
+ */
+img,
+embed,
+object,
+iframe {
+  vertical-align: bottom;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+/* Forms */
+/* ============================================ */
+/**
+ * Reset form fields to make them styleable
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  vertical-align: middle;
+  color: inherit;
+  font: inherit;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  border-radius: 0;
+  text-align: inherit;
+}
+
+/**
+ * Reset radio and checkbox appearance to preserve their look in iOS.
+ */
+[type=checkbox] {
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
+}
+
+[type=radio] {
+  -webkit-appearance: radio;
+  appearance: radio;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+button[disabled],
+[type=button][disabled],
+[type=reset][disabled],
+[type=submit][disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Remove arrow in IE10 & IE11
+ */
+select::-ms-expand {
+  display: none;
+}
+
+/**
+ * Remove padding
+ */
+option {
+  padding: 0;
+}
+
+/**
+ * Reset to invisible
+ */
+fieldset {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+legend {
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Remove the default vertical scrollbar in IE 10+.
+ */
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Correct the outline style in Safari.
+ */
+[type=search] {
+  outline-offset: -2px; /* 1 */
+}
+
+/**
+ * Remove the inner padding in Chrome and Safari on macOS.
+ */
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * 1. Correct the inability to style clickable types in iOS and Safari.
+ * 2. Change font properties to `inherit` in Safari.
+ */
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/**
+ * Clickable labels
+ */
+label[for] {
+  cursor: pointer;
+}
+
+/* Interactive */
+/* ============================================ */
+/*
+ * Add the correct display in Edge, IE 10+, and Firefox.
+ */
+details {
+  display: block;
+}
+
+/*
+ * Add the correct display in all browsers.
+ */
+summary {
+  display: list-item;
+}
+
+/*
+ * Remove outline for editable content.
+ */
+[contenteditable] {
+  outline: none;
+}
+
+/* Table */
+/* ============================================ */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption {
+  text-align: left;
+}
+
+td,
+th {
+  vertical-align: top;
+  padding: 0;
+}
+
+th {
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Misc */
+/* ============================================ */
+/**
+ * Add the correct display in IE 10+.
+ */
+template {
+  display: none;
+}
+
+/**
+ * Add the correct display in IE 10.
+ */
+[hidden] {
+  display: none;
+}
+
+/*====================================
+目次
+┗【 初期設定 】
+┗【 共通パーツ 】
+=====================================*/
+/*-- globalフォルダの直下の_index.scss --*/
+/*====================================
+* font
+=====================================*/
+@font-face {
+  font-family: "NotoSansJP";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../font/NotoSansJP-Regular.woff2") format("woff2"), url("../font/NotoSansJP-Regular.woff") format("woff");
+}
+@font-face {
+  font-family: "NotoSansJP";
+  font-style: normal;
+  font-weight: bold;
+  src: url("../font/NotoSansJP-Bold.woff2") format("woff2"), url("../font/NotoSansJP-Bold.woff") format("woff");
+}
+/*====================================
+* color
+=====================================*/
+/*====================================
+* ブレイクポイント
+=====================================*/
+/*====================================
+* 初期設定
+=====================================*/
+html {
+  font-size: 16px;
+  background: #fff;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  font-family: "NotoSansJP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 0.875rem;
+  color: #333;
+  letter-spacing: 0.04em;
+  line-height: 1.875;
+  background: rgb(231, 239, 248);
+  background: linear-gradient(90deg, rgb(231, 239, 248) 0%, rgb(255, 255, 255) 100%);
+  background: #6FB8DF;
+}
+@media screen and (min-width: 769px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+main {
+  margin-top: 82px;
+}
+@media screen and (min-width: 1025px) {
+  main {
+    margin-top: 100px;
+  }
+}
+main:not(#top) {
+  padding: 100px 0;
+}
+
+@media screen and (min-width: 901px) {
+  .spOnly {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .pcOnly {
+    display: none;
+  }
+}
+
+time {
+  color: #333;
+}
+
+/*====================================
+* 共通パーツ
+=====================================*/
+.l-inner {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 900px;
+  box-sizing: content-box;
+}
+@media screen and (min-width: 1241px) {
+  .l-inner {
+    padding: 0 40px;
+  }
+}
+
+.l-wrapper {
+  padding: 60px 20px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+
+.c-tit__01 {
+  font-size: clamp(1.125rem, 0.9908256881rem + 0.5504587156vw, 1.5rem);
+  color: #fff;
+  font-weight: bold;
+}
+.c-tit__01 + .l-blog-container {
+  margin-top: 40px;
+}
+.c-tit__02 {
+  font-size: clamp(1.125rem, 0.9908256881rem + 0.5504587156vw, 1.5rem);
+  font-weight: bold;
+}
+
+.c-btn a {
+  margin: auto;
+  width: 280px;
+  height: 60px;
+  display: grid;
+  place-content: center;
+  color: #6FB8DF;
+  font-weight: bold;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  transition: 0.3s;
+  transition-property: color, background-color;
+}
+@media (hover: hover) {
+  .c-btn a:where(:any-link, :enabled, summary):hover {
+    color: #fff;
+    background-color: #6FB8DF;
+  }
+}
+
+.c-pagenavi {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 clamp(1rem, 0.597826087rem + 1.7391304348vw, 1.25rem);
+}
+.c-pagenavi .item {
+  font-size: 0.75rem;
+}
+.c-pagenavi .item.number {
+  font-size: 0.875rem;
+}
+.c-pagenavi .item.-first, .c-pagenavi .item.-last {
+  position: relative;
+  display: flex;
+  gap: clamp(1rem, 0.597826087rem + 1.7391304348vw, 1.25rem);
+  align-items: center;
+}
+.c-pagenavi .item.-first::before, .c-pagenavi .item.-last::before {
+  content: "…";
+  display: block;
+  color: #fff;
+}
+.c-pagenavi .item.-first {
+  flex-direction: row-reverse;
+}
+.c-pagenavi .item a, .c-pagenavi .item span {
+  display: grid;
+  place-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+.c-pagenavi .item span {
+  color: #fff;
+  border: 1px solid #fff;
+}
+.c-pagenavi .item a {
+  color: #6FB8DF;
+  background-color: #fff;
+  border: 1px solid #fff;
+  transition: 0.3s;
+  transition-property: color, background-color;
+}
+@media (hover: hover) {
+  .c-pagenavi .item a:where(:any-link, :enabled, summary):hover {
+    color: #fff;
+    background-color: #6FB8DF;
+  }
+}
+.c-pagenavi .item a.prev::after {
+  border-left: 0;
+  border-right-color: currentColor;
+}
+.c-pagenavi .item a.next::after {
+  border-right: 0;
+  border-left-color: currentColor;
+}
+
+/*====================================
+* ヘッダー
+=====================================*/
+.l-header {
+  padding: 0 clamp(1.25rem, -4.5689655172rem + 10.3448275862vw, 5rem);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99998;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 82px;
+  width: 100%;
+  background-color: #fff;
+}
+@media screen and (min-width: 901px) {
+  .l-header {
+    height: 100px;
+  }
+}
+.l-header .l-header-logo {
+  display: flex;
+  gap: 6px 24px;
+}
+@media screen and (max-width: 768px) {
+  .l-header .l-header-logo {
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 901px) {
+  .l-header .l-header-logo {
+    align-items: center;
+  }
+}
+.l-header .l-header-logo h1 {
+  font-size: clamp(1.25rem, 1.1605504587rem + 0.3669724771vw, 1.5rem);
+  font-weight: bold;
+}
+
+.l-header-menu {
+  height: 100%;
+  display: grid;
+  place-content: center;
+}
+@media screen and (max-width: 900px) {
+  .l-header-menu {
+    padding-bottom: 81px;
+    position: fixed;
+    top: 81px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    background-color: #6FB8DF;
+    text-align: left;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 5;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .l-header-menu.-active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+.l-header-menu ul {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  font-weight: bold;
+}
+@media screen and (max-width: 900px) {
+  .l-header-menu ul {
+    flex-direction: column;
+  }
+}
+.l-header-menu ul li a {
+  display: block;
+  width: 100%;
+  transition: color 0.3s;
+}
+@media screen and (max-width: 900px) {
+  .l-header-menu ul li a {
+    font-size: clamp(1.125rem, 0.8382352941rem + 1.1764705882vw, 1.5rem);
+  }
+}
+@media (hover: hover) {
+  .l-header-menu ul li a:where(:any-link, :enabled, summary):hover {
+    color: #6FB8DF;
+  }
+}
+
+.l-header-btn {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  .l-header-btn {
+    display: grid;
+    place-content: center;
+    width: 40px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 10;
+    position: relative;
+  }
+  .l-header-btn::before, .l-header-btn::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    transition: all 0.3s;
+  }
+  .l-header-btn::before {
+    left: 0;
+    top: 0;
+  }
+  .l-header-btn::after {
+    right: 0;
+    bottom: 0px;
+  }
+}
+.l-header-btn div {
+  display: block;
+  width: 40px;
+  height: 2px;
+  background-color: #333;
+  transition: opacity 0.3s;
+}
+.l-header-btn.-active {
+  height: 40px;
+}
+.l-header-btn.-active::before {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.l-header-btn.-active::after {
+  top: 50%;
+  bottom: auto;
+  transform: translateY(-50%) rotate(-45deg);
+}
+.l-header-btn.-active div {
+  opacity: 0;
+}
+
+/*====================================
+* footer / フッター
+=====================================*/
+.l-footer {
+  margin-top: 60px;
+  padding: 10px 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background-color: #fff;
+}
+.l-footer p {
+  font-size: 0.8125rem;
+}
+
+/*====================================
+* トップページ
+=====================================*/
+.top-mv {
+  margin: 0 calc(50% - 50vw);
+}
+.top-mv__swiper .swiper-wrapper .swiper-slide {
+  width: 100% !important;
+  aspect-ratio: 16/9;
+}
+.top-mv__swiper .swiper-wrapper .swiper-slide a {
+  display: block;
+  height: 100%;
+}
+.top-mv__swiper .swiper-wrapper .swiper-slide a figure {
+  overflow: hidden;
+  height: 100%;
+}
+.top-mv__swiper .swiper-wrapper .swiper-slide a figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+@media (hover: hover) {
+  .top-mv__swiper .swiper-wrapper .swiper-slide a:where(:any-link, :enabled, summary):hover figure img {
+    scale: 1.1;
+  }
+}
+.top-mv__swiper .swiper-pagination-bullet {
+  background-color: #fff;
+  opacity: 1;
+}
+.top-mv__swiper .swiper-pagination-bullet-active {
+  background-color: #6FB8DF;
+}
+
+.top-blog .l-blog-list {
+  margin-top: 60px;
+}
+
+/*====================================
+* blog
+=====================================*/
+.l-blog-container {
+  padding: 30px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.05);
+}
+.l-blog-container + .c-btn {
+  margin-top: 30px;
+}
+
+.l-blog-list {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px 20px;
+}
+.l-blog-list > li {
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
+  gap: 0;
+}
+.l-blog-list > li > a {
+  padding: 28px 10px 20px;
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+@media (hover: hover) {
+  .l-blog-list > li > a:where(:any-link, :enabled, summary):hover figure img {
+    scale: 1.08;
+  }
+  .l-blog-list > li > a:where(:any-link, :enabled, summary):hover .tit, .l-blog-list > li > a:where(:any-link, :enabled, summary):hover time {
+    color: #6FB8DF;
+  }
+}
+.l-blog-list > li > a::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #6FB8DF;
+}
+.l-blog-list > li > a figure {
+  border-radius: 10px;
+  overflow: hidden;
+}
+.l-blog-list > li > a figure img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  transition: scale 0.3s ease-out;
+}
+.l-blog-list > li > a .tit, .l-blog-list > li > a time {
+  transition: color 0.3s ease-in-out;
+}
+.l-blog-list > li > a .tit {
+  margin-top: 20px;
+  font-weight: bold;
+  line-height: 1.3;
+}
+.l-blog-list > li > a time {
+  margin-top: 10px;
+  display: block;
+  text-align: right;
+  font-size: 0.8125rem;
+}
+.l-blog-list > li .c-tags {
+  margin-top: 3px;
+  padding: 15px 10px 15px;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+}
+.l-blog-list + .c-btn {
+  margin-top: 40px;
+}
+
+/*====================================
+* blog記事
+=====================================*/
+.c-blog-article {
+  margin: auto;
+  padding: 20px 20px 100px;
+  max-width: 620px;
+  width: 100%;
+  position: relative;
+}
+.c-blog-article::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #6FB8DF;
+}
+.c-blog-article__tit {
+  margin-top: 32px;
+  font-weight: bold;
+  font-size: clamp(1.25rem, 1.1158256881rem + 0.5504587156vw, 1.625rem);
+  line-height: 1.3;
+}
+.c-blog-article__header time {
+  display: block;
+  text-align: right;
+}
+.c-blog-article__header .c-tags {
+  margin-top: 8px;
+}
+.c-blog-article__contents {
+  margin-top: 24px;
+}
+.c-blog-article__contents > *:first-child {
+  margin-top: 0;
+}
+.c-blog-article__contents h2 {
+  margin-top: 20px;
+  font-size: clamp(1.125rem, 0.9908256881rem + 0.5504587156vw, 1.5rem);
+  font-weight: bold;
+}
+.c-blog-article__contents h2 + p {
+  margin-top: 10px;
+}
+.c-blog-article__contents h3 {
+  margin-top: 20px;
+  font-size: clamp(1rem, 0.8658256881rem + 0.5504587156vw, 1.375rem);
+  font-weight: bold;
+}
+.c-blog-article__contents h3 + p {
+  margin-top: 10px;
+}
+.c-blog-article__contents p + p {
+  margin-top: 15px;
+}
+.c-blog-article__contents a {
+  padding-bottom: 2px;
+  color: #6FB8DF;
+  border-bottom: 1px solid #6FB8DF;
+  transition: opacity 0.3s;
+}
+@media (hover: hover) {
+  .c-blog-article__contents a:where(:any-link, :enabled, summary):hover {
+    opacity: 0.6;
+  }
+}
+.c-blog-article__contents img {
+  margin-top: 10px;
+}
+.c-blog-article__contents img + p {
+  margin-top: 20px;
+}
+.c-blog-article__contents .youtube {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 16/9;
+}
+.c-blog-article__contents .youtube + p {
+  margin-top: 30px;
+}
+.c-blog-article__contents .youtube iframe {
+  width: 100%;
+  height: 100%;
+}
+.c-blog-article__contents figure img {
+  width: 100%;
+  height: auto;
+}
+.c-blog-article__contents figure + p {
+  margin-top: 20px;
+}
+.c-blog-article__pager {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.c-blog-article__pager .item {
+  display: grid;
+  place-content: center;
+  width: 35px;
+  height: 35px;
+  color: #6FB8DF;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+  border: 1px solid #fff;
+  transition-property: color, background-color;
+}
+@media (hover: hover) {
+  .c-blog-article__pager .item:where(:any-link, :enabled, summary):hover {
+    color: #fff;
+    background-color: #6FB8DF;
+  }
+}
+.c-blog-article__pager span {
+  opacity: 0;
+}
+
+.c-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 4px 5px;
+}
+.c-tags li a {
+  display: block;
+  padding: 2px 5px;
+  color: #fff;
+  background-color: #6FB8DF;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  transition: 0.3s;
+  transition-property: color, background-color;
+  border: 1px solid #6FB8DF;
+}
+@media (hover: hover) {
+  .c-tags li a:where(:any-link, :enabled, summary):hover {
+    color: #6FB8DF;
+    background-color: #fff;
+  }
+}
+
+/*====================================
+目次
+┗【 contact 】
+┗【 400 】
+=====================================*/
+/*====================================
+* contact
+=====================================*/
+#contact .l-inner {
+  max-width: 800px;
+}
+#contact dl {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 10px;
+}
+@media screen and (min-width: 901px) {
+  #contact dl {
+    grid-template-columns: 240px auto;
+  }
+}
+#contact dl + dl {
+  margin-top: 20px;
+}
+#contact input, #contact textarea {
+  padding: 5px 10px;
+  width: 100%;
+  border: 1px solid #999;
+  line-height: 1.4;
+}
+#contact textarea {
+  field-sizing: content;
+  min-height: 10rem;
+  max-height: 40rem;
+}
+#contact button {
+  margin: 60px auto 0;
+  width: 280px;
+  height: 60px;
+  display: grid;
+  place-content: center;
+  color: #fff;
+  font-weight: bold;
+  background-color: #6FB8DF;
+  border-radius: 5px;
+  border: 1px solid #6FB8DF;
+  transition: 0.3s;
+  transition-property: color, background-color;
+}
+@media (hover: hover) {
+  #contact button:where(:any-link, :enabled, summary):hover {
+    color: #6FB8DF;
+    background-color: #fff;
+  }
+}
+
+/*====================================
+* 404
+=====================================*/
+.not-found {
+  text-align: center;
+  color: #fff;
+}
+.not-found .tit {
+  font-size: clamp(1.5rem, 0.3362068966rem + 2.0689655172vw, 2.25rem);
+  font-weight: bold;
+}
+.not-found .tit + p {
+  margin: 30px auto 60px;
+}
+
+/*# sourceMappingURL=style.css.map */

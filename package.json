@@ -6,9 +6,20 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "npx wrangler pages deploy dist",
+    "project": "wrangler pages deploy dist --project-name astro-t-brender"
   },
   "dependencies": {
-    "astro": "^5.2.5"
+    "@astrojs/cloudflare": "^12.2.1",
+    "@astrojs/vercel": "^8.1.1",
+    "astro": "^5.2.5",
+    "lil-gui": "^0.20.0",
+    "microcms-js-sdk": "^3.1.2",
+    "swiper": "^11.2.5",
+    "three": "^0.173.0"
+  },
+  "devDependencies": {
+    "sass": "^1.84.0"
   }
 }

@@ -1,0 +1,168 @@
+/*====================================
+目次
+┗【 初期設定 】
+┗【 共通パーツ 】
+=====================================*/
+
+@use "../global" as *;
+
+/*====================================
+* 初期設定
+=====================================*/
+html {
+  font-size: 16px;
+  background: #fff;
+}
+body {
+  display:grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+  font-family: $font_family;
+  font-size: rm(14);
+  color: $font_color;
+  letter-spacing: 0.04em;
+  line-height: (30/16);
+  background: rgb(231,239,248);
+  background: linear-gradient(90deg, rgba(231,239,248,1) 0%, rgba(255,255,255,1) 100%);
+  background: $base_color;
+  @include mq(m) {
+    font-size: rm(16);
+  }
+}
+main {
+  margin-top: 82px;
+  @include mq(xl) {
+    margin-top: 100px;
+  }
+  &:not(#top) {
+    padding: 100px 0;
+  }
+}
+.spOnly {
+  @include mq(l) {
+    display: none;
+  }
+}
+.pcOnly {
+  @include mq(l,max) {
+    display: none;
+  }
+}
+time {
+  color: #333;
+}
+
+/*====================================
+* 共通パーツ
+=====================================*/
+.l-inner {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 900px;
+  box-sizing: content-box;
+  @include mq(xxl) {
+    padding: 0 40px;
+  }
+}
+.l-wrapper {
+  padding: 60px 20px;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.c-tit {
+  &__01 {
+    font-size: cl(18,24);
+    color: #fff;
+    font-weight: bold;
+    +.l-blog-container {
+      margin-top: 40px;
+    }
+  }
+  &__02 {
+    font-size: cl(18,24);
+    font-weight: bold;
+  }
+}
+.c-btn {
+  a {
+    margin: auto;
+    width: 280px;
+    height: 60px;
+    display: grid;
+    place-content: center;
+    color: $key_color;
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    transition: 0.3s;
+    transition-property: color, background-color;
+    @include hover {
+      color: #fff;
+      background-color: $key_color;
+    }
+  }
+}
+.c-pagenavi {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 cl(16,20,370,600);
+  .item {
+    font-size: rm(12);
+    &.number {
+      font-size: rm(14);
+    }
+    &.-first,
+    &.-last {
+      position: relative;
+      display: flex;
+      gap: cl(16,20,370,600);
+      align-items: center;
+      &::before {
+        content: "…";
+        display: block;
+        color: #fff;
+      }
+    }
+    &.-first {
+      flex-direction: row-reverse;
+    }  
+    a,span {
+      display: grid;
+      place-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+    }
+    span {
+      color: #fff;
+      border: 1px solid #fff;
+    }
+    a {
+      color: $key_color;
+      background-color: #fff;
+      border: 1px solid #fff;
+      transition: 0.3s;
+      transition-property: color,background-color;
+      @include hover {
+        color: #fff;
+        background-color: $key_color;
+      }
+      &.prev {
+        &::after {
+          border-left: 0;
+          border-right-color: currentColor;
+        }
+      }
+      &.next {
+        &::after {
+          border-right: 0;
+          border-left-color: currentColor;
+        }
+      }
+    }
+  }
+}

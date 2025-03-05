@@ -1,0 +1,40 @@
+$base_width: 1200;
+$base_fontSize: 16;
+/*====================================
+* font
+=====================================*/
+@font-face {
+	font-family: "NotoSansJP";
+	font-style: normal;
+	font-weight: normal;
+	src: url('../font/NotoSansJP-Regular.woff2') format('woff2'), url('../font/NotoSansJP-Regular.woff') format('woff'); 
+}
+@font-face {
+	font-family: "NotoSansJP";
+	font-style: normal;
+	font-weight: bold;
+	src: url('../font/NotoSansJP-Bold.woff2') format('woff2'), url('../font/NotoSansJP-Bold.woff') format('woff'); 
+}
+$font_family: "NotoSansJP","Helvetica Neue",Arial,"Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif;
+$en_family: Helvetica, Arial, sans-serif;
+
+/*====================================
+* color
+=====================================*/
+$key_color: #6FB8DF;
+$base_color: #6FB8DF;
+$font_color: #333;
+/*====================================
+* ブレイクポイント
+=====================================*/
+
+$mq-breakpoints: (
+	'ss' : 430px,
+  's' : 600px,
+  'm': 768px,
+  'l' : 900px,
+  'xl': 1024px,
+  'xxl': 1240px,
+  'xxxl': 1430px,
+  'lmax': 1600px,
+);
