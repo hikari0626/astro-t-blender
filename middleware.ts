@@ -8,19 +8,12 @@ export default function middleware(request: Request) {
   const vercelEnv = process.env.VERCEL_ENV; // Vercel 環境変数を取得
   console.log("Vercel Environment:", vercelEnv); // ログで確認
 
-  const url = new URL(request.url);
-
-  // 本番環境では `/contact/` のみ制限
-  const isRestrictedInProduction = vercelEnv === "production";
-
-  // プレビュー環境ではサイト全体を制限
+  // プレビュー環境のみ制限をかける
   const isRestrictedInPreview = vercelEnv === "preview";
 
-  console.log("isRestrictedInProduction:", isRestrictedInProduction);
-  console.log("isRestrictedInPreview:", isRestrictedInPreview);
-
-  if (!isRestrictedInProduction && !isRestrictedInPreview) {
-    return next(); // 制限不要ならスルー
+  // プレビュー環境以外はスルー
+  if (!isRestrictedInPreview) {
+    return next(); 
   }
 
   const authorizationHeader = request.headers.get("authorization");
@@ -34,6 +27,7 @@ export default function middleware(request: Request) {
     }
   }
 
+  // 認証が必要な場合、Basic Authのダイアログを表示
   return new Response("Basic Auth required", {
     status: 401,
     headers: {
