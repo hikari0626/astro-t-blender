@@ -4,34 +4,44 @@
 * トップページ
 =====================================*/
 .top-mv {
-  margin: 0 calc(50% - 50vw);
+  padding-top: 40px;
+  // margin: 0 calc(50% - 50vw);
   &__swiper {
     .swiper-wrapper {
       .swiper-slide {
         width: 100%!important;
         aspect-ratio: 16/9;
+        &.swiper-slide-active,
+        &.swiper-slide-prev {
+          a {
+            figure {
+              img {
+                scale: 1.15;
+              }
+            }
+          }
+        }
         a {
           display: block;
           height: 100%;
           figure {
             overflow: hidden;
             height: 100%;
+            border: 6px solid #fff;
+            border-radius: 12px;
             img {
               width: 100%;
               height: 100%;
               object-fit: cover;
-              transition: 0.3s;
-            }
-          }
-          @include hover {
-            figure {
-              img {
-                scale: (1.1);
-              }
+              transition: 10s ease-in-out;
             }
           }
         }
       }
+    }
+    .swiper-pagination-bullets {
+      padding-right: 15px;
+      text-align: right;
     }
     .swiper-pagination-bullet {
       background-color: #fff;
@@ -44,6 +54,6 @@
 }
 .top-blog {
   .l-blog-list {
-    margin-top: 60px;
+    margin-top: 40px;
   }
 }

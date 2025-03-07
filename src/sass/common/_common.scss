@@ -31,12 +31,12 @@ body {
   }
 }
 main {
-  margin-top: 82px;
+  margin-top: 60px;
   @include mq(xl) {
-    margin-top: 100px;
+    margin-top: 80px;
   }
   &:not(#top) {
-    padding: 100px 0;
+    padding: 40px 0;
   }
 }
 .spOnly {

@@ -23,6 +23,21 @@
     + dl {
       margin-top: 20px;
     }
+    dt {
+      label {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        .required {
+          padding: 5px 6px 6px;
+          color: #fff;
+          background-color: #D84040;
+          border-radius: 5px;
+          line-height: 1;
+          font-size: cl(10,11);
+        }
+      }
+    }
   }
   input,textarea {
     padding: 5px 10px;
@@ -51,6 +66,11 @@
     @include hover {
       color: $key_color;
       background-color: #fff;
+    }
+    &:disabled {
+      cursor: not-allowed;
+      border-color: #C3C3C3;
+      background-color: #C3C3C3;
     }
   }
 }

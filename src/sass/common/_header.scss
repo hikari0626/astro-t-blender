@@ -12,11 +12,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 82px;
+  height: 60px;
   width: 100%;
   background-color: #fff;
   @include mq(l) {
-    height: 100px;
+    height: 80px;
   }
   .l-header-logo {
     display: flex;
@@ -87,7 +87,7 @@
     display: grid;
     place-content: center;
     width: 40px;
-    height: 20px;
+    height: 10px;
     cursor: pointer;
     z-index: 10;
     position: relative;
@@ -110,14 +110,6 @@
       bottom: 0px;
     }
   }
-  div {
-    display: block;
-    width: 40px;
-    height: 2px;
-    background-color: $font_color;
-    transition: opacity .3s;
-    
-  }
   //.l-header-btn
   &.-active {
     height: 40px;
@@ -129,9 +121,6 @@
       top: 50%;
       bottom: auto;
       transform: translateY(-50%) rotate(-45deg);
-    }
-    div {
-      opacity: 0;
     }
   }
 }
