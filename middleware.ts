@@ -5,28 +5,32 @@ export const config = {
 };
 
 export default function middleware(request: Request) {
-  // Vercelの環境変数で本番環境かプレビュー環境かを判定
-  const vercelEnv = process.env.VERCEL_ENV; // "production" | "preview" | "development"
+  const vercelEnv = process.env.VERCEL_ENV; // Vercel 環境変数を取得
+  console.log("Vercel Environment:", vercelEnv); // ログで確認
+
   const url = new URL(request.url);
 
-  // 本番環境では `/contact/` 以下のみ制限
-  const isRestrictedInProduction = vercelEnv === "production" && url.pathname.startsWith("/contact");
+  // 本番環境では `/contact/` のみ制限
+  const isRestrictedInProduction = vercelEnv === "production";
 
   // プレビュー環境ではサイト全体を制限
   const isRestrictedInPreview = vercelEnv === "preview";
 
+  console.log("isRestrictedInProduction:", isRestrictedInProduction);
+  console.log("isRestrictedInPreview:", isRestrictedInPreview);
+
   if (!isRestrictedInProduction && !isRestrictedInPreview) {
-    return next(); // 制限対象でなければそのまま通す
+    return next(); // 制限不要ならスルー
   }
 
   const authorizationHeader = request.headers.get("authorization");
 
   if (authorizationHeader) {
     const basicAuth = authorizationHeader.split(" ")[1];
-    const [user, password] = atob(basicAuth).toString().split(":");
+    const [user, password] = atob(basicAuth).split(":");
 
     if (user === process.env.BASIC_AUTH_USER && password === process.env.BASIC_AUTH_PASSWORD) {
-      return next(); // 認証OKならそのまま進む
+      return next(); // 認証成功なら進む
     }
   }
 
